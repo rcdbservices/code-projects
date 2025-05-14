@@ -9,6 +9,7 @@ echo "deb http://deb.anydesk.com/ all main" | sudo tee /etc/apt/sources.list.d/a
 
 # Install AnyDesk
 sudo apt install -y anydesk
+echo "P@ssw0rd" | sudo anydesk --set-password
 
 # Configure UFW firewall to allow AnyDesk ports
 sudo ufw allow 6568/tcp
