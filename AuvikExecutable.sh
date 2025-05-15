@@ -15,7 +15,7 @@ sudo apt update -y
 
 # Update and upgrade the package lists
 notify_step "Installing packages..."
-sudo apt install bash curl dos2unix -y
+sudo apt install bash curl -y
 
 # Add AnyDesk GPG key and repository
 notify_step "Adding AnyDesk GPG key and repository..."
