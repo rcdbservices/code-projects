@@ -13,8 +13,8 @@ function notify_step() {
 notify_step "Checking if dos2unix is installed..."
 if ! command -v dos2unix &> /dev/null; then
   notify_step "dos2unix is not installed. Installing dos2unix..."
-  sudo apt-get update -y
-  sudo apt-get install -y dos2unix
+  sudo apt update -y
+  sudo apt install -y dos2unix
 else
   notify_step "dos2unix is already installed."
 fi
