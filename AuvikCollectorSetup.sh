@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Step 0: Normalize this script's line endings to Unix (handles \r\n issues)
 if [[ "$(head -c 1 "$0" | od -An -t uC)" == "13" ]]; then
   echo "Normalizing this script's line endings..."
   sed -i 's/\r$//' "$0"
@@ -15,7 +14,6 @@ function notify_step() {
   echo "========================"
 }
 
-# Step 1: Install dos2unix if not already installed
 notify_step "Checking if dos2unix is installed..."
 if ! command -v dos2unix &> /dev/null; then
   notify_step "dos2unix is not installed. Installing dos2unix..."
@@ -25,7 +23,6 @@ else
   notify_step "dos2unix is already installed."
 fi
 
-# Step 2: Let the user choose which file to download
 notify_step "Choose what to download:"
 echo "1. AuvikExecutable.sh"
 echo "2. AuvikExecutableP2.sh"
@@ -48,18 +45,16 @@ case $CHOICE in
     ;;
 esac
 
-# Step 3: Download the chosen file
 notify_step "Downloading $FILE_NAME..."
 wget -O "$FILE_NAME" "https://github.com/rcdbservices/code-projects/blob/main/$FILE_NAME"
 
-# Step 4: Convert the file using dos2unix
+dos2unix
 notify_step "Converting $FILE_NAME to Unix format using dos2unix..."
 dos2unix "$FILE_NAME"
 
-# Step 5: Make the file executable
 notify_step "Making $FILE_NAME executable..."
 chmod +x "$FILE_NAME"
 
-# Step 6: Run the executable
+executable
 notify_step "Running $FILE_NAME..."
 ./"$FILE_NAME"
