@@ -1,23 +1,40 @@
 #!/bin/bash
 
+set -e  # Exit immediately if a command exits with a non-zero status
+
+# Function to display progress
+function notify_step() {
+  echo -e "\n========================"
+  echo "$1"
+  echo "========================"
+}
+
 # Update and upgrade the package lists
+notify_step "Updating package lists..."
 sudo apt update -y
 
 # Add AnyDesk GPG key and repository
+notify_step "Adding AnyDesk GPG key and repository..."
 wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | sudo apt-key add -
 echo "deb http://deb.anydesk.com/ all main" | sudo tee /etc/apt/sources.list.d/anydesk.list
 
 # Install AnyDesk
+notify_step "Installing AnyDesk..."
 sudo apt install -y anydesk
-echo "P@ssw0rd" | sudo anydesk --set-password
 
 # Configure UFW firewall to allow AnyDesk ports
+notify_step "Configuring UFW firewall for AnyDesk..."
 sudo ufw allow 6568/tcp
 sudo ufw allow 7070/tcp
 sudo ufw allow 50001/tcp
 sudo ufw reload
 
-# Open and modify GDM3 configuration
+# Set AnyDesk password
+notify_step "Setting AnyDesk password..."
+echo "1Wan@2025\$\$" | sudo anydesk --set-password
+
+# Notify to configure GDM config manually
+notify_step "Disabling Wayland and configuring GDM..."
 sudo sed -i '/^#WaylandEnable=false/s/^#//' /etc/gdm3/custom.conf
 sudo sed -i '/^#AutomaticLoginEnable/s/^#//' /etc/gdm3/custom.conf
 sudo sed -i '/^#AutomaticLogin/s/^#//' /etc/gdm3/custom.conf
@@ -26,13 +43,5 @@ sudo sed -i '/^#AutomaticLogin/s/^#//' /etc/gdm3/custom.conf
 USERNAME=$(whoami)
 sudo sed -i "s/AutomaticLogin = .*/AutomaticLogin = $USERNAME/" /etc/gdm3/custom.conf
 
-# Power and screen settings
-gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing'
-gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'nothing'
-gsettings set org.gnome.desktop.screensaver lock-enabled false
-gsettings set org.gnome.desktop.session idle-delay 0
-
-# Disable sleep, suspend, hibernate, and hybrid-sleep targets
-sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
-
-echo "Setup and configuration completed successfully!"
+# Completion message
+notify_step "Setup and configuration completed successfully!"
