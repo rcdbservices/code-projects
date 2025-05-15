@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Normalize this script's line endings to Unix (handles \r\n issues)
+if file "$0" | grep -q "CRLF"; then
+  echo "Normalizing line endings of this script..."
+  sed -i 's/\r$//' "$0"
+fi
+
 set -e  # Exit immediately if a command exits with a non-zero status
 
 # Function to display progress
@@ -8,15 +14,6 @@ function notify_step() {
   echo "$1"
   echo "========================"
 }
-
-# Step 0: Normalize the current script's line endings
-if command -v dos2unix &> /dev/null; then
-  notify_step "Normalizing this script's line endings with dos2unix..."
-  dos2unix "$0"
-else
-  notify_step "dos2unix is not installed. Attempting to normalize line endings manually..."
-  sed -i 's/\r$//' "$0"
-fi
 
 # Step 1: Install dos2unix if not already installed
 notify_step "Checking if dos2unix is installed..."
