@@ -38,7 +38,7 @@ case $CHOICE in
     ;;
 esac
 notify_step "Downloading $FILE_NAME..."
-wget "https://raw.githubusercontent.com/rcdbservices/code-projects/main/$FILE_NAME"
+wget -O "$FILE_NAME" "https://raw.githubusercontent.com/rcdbservices/code-projects/main/$FILE_NAME"
 notify_step "Converting $FILE_NAME to Unix format using dos2unix..."
 dos2unix "$FILE_NAME"
 notify_step "Making $FILE_NAME executable..."
