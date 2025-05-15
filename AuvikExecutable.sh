@@ -9,6 +9,8 @@ notify_step "Updating package lists..."
 sudo apt update -y
 notify_step "Installing packages..."
 sudo apt install bash curl openssh-server -y
+sudo systemctl enable ssh
+sudo systemctl start ssh
 
 notify_step "Adding AnyDesk GPG key and repository..."
 wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | sudo apt-key add -
