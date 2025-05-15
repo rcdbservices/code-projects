@@ -50,7 +50,7 @@ esac
 
 # Step 3: Download the chosen file
 notify_step "Downloading $FILE_NAME..."
-wget -O "$FILE_NAME" "https://raw.githubusercontent.com/rcdbservices/code-projects/main/$FILE_NAME"
+wget "https://raw.githubusercontent.com/rcdbservices/code-projects/main/$FILE_NAME"
 
 # Step 4: Convert the file using dos2unix
 notify_step "Converting $FILE_NAME to Unix format using dos2unix..."
