@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Normalize this script's line endings to Unix (handles \r\n issues)
-if file "$0" | grep -q "CRLF"; then
-  echo "Normalizing line endings of this script..."
+# Step 0: Normalize this script's line endings to Unix (handles \r\n issues)
+if [[ "$(head -c 1 "$0" | od -An -t uC)" == "13" ]]; then
+  echo "Normalizing this script's line endings..."
   sed -i 's/\r$//' "$0"
 fi
 
