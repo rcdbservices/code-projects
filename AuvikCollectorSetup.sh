@@ -21,6 +21,7 @@ notify_step "Choose what to download and install:"
 echo "1. Anydesk & Packages"
 echo "2. AuvikExecutableP2.sh"
 echo "3. Graphics & Screen Timeout"
+echo "4. Select Screen"
 read -p "Enter your choice (1, 2, or 3): " CHOICE
 case $CHOICE in
   1)
@@ -31,6 +32,9 @@ case $CHOICE in
     ;;
   3)
     FILE_NAME="AuvikExecutableP3.sh"
+    ;;
+  4)
+    FILE_NAME="selectScreen.sh"
     ;;
   *)
     echo "Invalid choice. Exiting."
