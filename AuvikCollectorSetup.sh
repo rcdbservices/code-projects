@@ -17,7 +17,7 @@ if ! command -v dos2unix &> /dev/null; then
 else
   notify_step "dos2unix is already installed."
 fi
-notify_step "Choose what to download:"
+notify_step "Choose what to download and install:"
 echo "1. Anydesk & Packages"
 echo "2. AuvikExecutableP2.sh"
 echo "3. Graphics & Screen Timeout"
