@@ -13,6 +13,10 @@ function notify_step() {
 notify_step "Updating package lists..."
 sudo apt update -y
 
+# Update and upgrade the package lists
+notify_step "Installing packages..."
+sudo apt install bash curl dos2unix -y
+
 # Add AnyDesk GPG key and repository
 notify_step "Adding AnyDesk GPG key and repository..."
 wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | sudo apt-key add -
