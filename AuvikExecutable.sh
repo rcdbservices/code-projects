@@ -33,7 +33,7 @@ sudo ufw reload
 notify_step "Setting AnyDesk password..."
 echo "1Wan@2025\$\$" | sudo anydesk --set-password
 
-# Notify to configure GDM config manually
+# Disable Wayland and configure GDM
 notify_step "Disabling Wayland and configuring GDM..."
 sudo sed -i '/^#WaylandEnable=false/s/^#//' /etc/gdm3/custom.conf
 sudo sed -i '/^#AutomaticLoginEnable/s/^#//' /etc/gdm3/custom.conf
@@ -43,5 +43,10 @@ sudo sed -i '/^#AutomaticLogin/s/^#//' /etc/gdm3/custom.conf
 USERNAME=$(whoami)
 sudo sed -i "s/AutomaticLogin = .*/AutomaticLogin = $USERNAME/" /etc/gdm3/custom.conf
 
-# Completion message
+# Ask for reboot
 notify_step "Setup and configuration completed successfully!"
+read -p "Do you want to reboot the system now? (Y/N): " REBOOT_CHOICE
+case "$REBOOT_CHOICE" in
+  [Yy]* ) notify_step "Rebooting now..."; sudo reboot;;
+  * ) notify_step "Reboot skipped. Please reboot the system manually if required.";;
+esac
