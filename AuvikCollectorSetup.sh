@@ -20,7 +20,7 @@ fi
 notify_step "Choose what to download:"
 echo "1. AuvikExecutable.sh"
 echo "2. AuvikExecutableP2.sh"
-echo "3. AuvikExecutableP3.sh"
+echo "3. Graphics & Screen Timeout"
 read -p "Enter your choice (1, 2, or 3): " CHOICE
 case $CHOICE in
   1)
