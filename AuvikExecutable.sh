@@ -45,8 +45,11 @@ sudo sed -i "s/AutomaticLogin = .*/AutomaticLogin = $USERNAME/" /etc/gdm3/custom
 
 # Ask for reboot
 notify_step "Setup and configuration completed successfully!"
-read -p "Do you want to reboot the system now? (Y/N): " REBOOT_CHOICE
-case "$REBOOT_CHOICE" in
-  [Yy]* ) notify_step "Rebooting now..."; sudo reboot;;
-  * ) notify_step "Reboot skipped. Please reboot the system manually if required.";;
-esac
+while true; do
+  read -p "Do you want to reboot the system now? (Y/N): " REBOOT_CHOICE
+  case "$REBOOT_CHOICE" in
+    [Yy]* ) notify_step "Rebooting now..."; sudo reboot; break;;
+    [Nn]* ) notify_step "Reboot skipped. Please reboot the system manually if required."; break;;
+    * ) echo "Please answer Y (yes) or N (no).";;
+  esac
+done
