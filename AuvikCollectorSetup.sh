@@ -1,18 +1,18 @@
 #!/bin/bash
-
+#
 # Function to display progress
 function notify_step() {
   echo -e "\n========================"
   echo "$1"
   echo "========================"
 }
-
+#
 notify_step "Choose what to download:"
 echo "1. AuvikExecutable.sh"
 echo "2. AuvikExecutableP2.sh"
 echo "3. AuvikExecutableP3.sh"
 read -p "Enter your choice (1, 2, or 3): " CHOICE
-
+#
 case $CHOICE in
   1)
     FILE_NAME="AuvikExecutable.sh"
@@ -28,7 +28,7 @@ case $CHOICE in
     exit 1
     ;;
 esac
-
+#
 notify_step "Downloading $FILE_NAME..."
 wget -O "$FILE_NAME" "https://github.com/rcdbservices/code-projects/blob/main/$FILE_NAME"
 
