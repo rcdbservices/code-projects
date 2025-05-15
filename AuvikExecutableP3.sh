@@ -9,6 +9,15 @@ function notify_step() {
   echo "========================"
 }
 
+notify_step "Fix Screen Timeout and Idle Activity"
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 0
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-timeout 0
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing'
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'nothing'
+gsettings set org.gnome.desktop.screensaver lock-enabled false
+gsettings set org.gnome.desktop.session idle-delay 0
+sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+
 notify_step "Installing xserver-xorg-video-dummy..."
 sudo apt-get update
 sudo apt-get install -y xserver-xorg-video-dummy
