@@ -9,6 +9,15 @@ function notify_step() {
   echo "========================"
 }
 
+# Step 0: Normalize the current script's line endings
+if command -v dos2unix &> /dev/null; then
+  notify_step "Normalizing this script's line endings with dos2unix..."
+  dos2unix "$0"
+else
+  notify_step "dos2unix is not installed. Attempting to normalize line endings manually..."
+  sed -i 's/\r$//' "$0"
+fi
+
 # Step 1: Install dos2unix if not already installed
 notify_step "Checking if dos2unix is installed..."
 if ! command -v dos2unix &> /dev/null; then
