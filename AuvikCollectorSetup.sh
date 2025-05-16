@@ -9,6 +9,9 @@ function notify_step() {
   echo "$1"
   echo "========================"
 }
+echo -e "\n========================"
+sudo anydesk --get-id
+echo "========================\n"
 notify_step "Checking if dos2unix is installed..."
 if ! command -v dos2unix &> /dev/null; then
   notify_step "dos2unix is not installed. Installing dos2unix..."
