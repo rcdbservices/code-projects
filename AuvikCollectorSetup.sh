@@ -25,7 +25,7 @@ echo "1. Anydesk & Packages"
 echo "2. AuvikExecutableP2.sh"
 echo "3. Graphics & Screen Timeout"
 echo "4. Select Screen"
-read -p "Enter your choice (1, 2, or 3): " CHOICE
+read -p "Enter your choice (1, 2, 3 or 4): " CHOICE
 case $CHOICE in
   1)
     FILE_NAME="AuvikExecutable.sh"
