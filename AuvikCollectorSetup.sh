@@ -4,15 +4,17 @@ if [[ "$(head -c 1 "$0" | od -An -t uC)" == "13" ]]; then
   sed -i 's/\r$//' "$0"
 fi
 set -e  
+
+echo "Anydesk ID"
+echo "\n========================"
+sudo anydesk --get-id
+echo "========================\n"
+
 function notify_step() {
   echo -e "\n========================"
   echo "$1"
   echo "\n\n========================"
 }
-notify_step "Anydesk ID"
-echo -e "\n========================"
-sudo anydesk --get-id
-echo "========================\n"
 notify_step "Checking if dos2unix is installed..."
 if ! command -v dos2unix &> /dev/null; then
   notify_step "dos2unix is not installed. Installing dos2unix..."
