@@ -19,6 +19,11 @@ echo "deb http://deb.anydesk.com/ all main" | sudo tee /etc/apt/sources.list.d/a
 notify_step "Installing AnyDesk..."
 sudo apt install -y anydesk
 
+echo "Anydesk ID"
+echo "\n========================"
+sudo anydesk --get-id
+echo "========================\n"
+
 notify_step "Configuring UFW firewall for AnyDesk..."
 sudo ufw allow 6568/tcp
 sudo ufw allow 7070/tcp
