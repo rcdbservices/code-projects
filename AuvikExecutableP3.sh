@@ -31,9 +31,6 @@ echo -e "\n========================"
 sudo anydesk --get-id
 echo "========================\n"
 
-notify_step "Restarting the display manager to apply the new configuration."
-sudo systemctl restart display-manager
-
 notify_step "Configuration completed successfully! The xserver-xorg-video-dummy package is installed, and /etc/X11/xorg.conf is configured."
 
 while true; do
@@ -44,3 +41,6 @@ while true; do
     * ) echo "Please answer Y (yes) or N (no).";;
   esac
 done
+
+notify_step "Restarting the display manager to apply the new configuration."
+sudo systemctl restart display-manager
