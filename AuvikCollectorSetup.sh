@@ -9,6 +9,7 @@ function notify_step() {
   echo "$1"
   echo "\n\n========================"
 }
+notify_step "Anydesk ID"
 echo -e "\n========================"
 sudo anydesk --get-id
 echo "========================\n"
