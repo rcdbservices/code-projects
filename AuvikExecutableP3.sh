@@ -10,7 +10,7 @@ function notify_step() {
 }
 
 notify_step "Installing dbus-x11..."
-sudo apt install dbus-x11
+sudo apt install dbus-x11 -y
 
 notify_step "Fix Screen Timeout and Idle Activity"
 gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 0
