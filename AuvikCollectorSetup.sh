@@ -7,7 +7,7 @@ set -e
 function notify_step() {
   echo -e "\n========================"
   echo "$1"
-  echo "========================"
+  echo "\n========================"
 }
 echo -e "\n========================"
 sudo anydesk --get-id
