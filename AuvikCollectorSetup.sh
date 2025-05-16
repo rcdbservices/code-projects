@@ -5,11 +5,6 @@ if [[ "$(head -c 1 "$0" | od -An -t uC)" == "13" ]]; then
 fi
 set -e  
 
-echo "Anydesk ID"
-echo "\n========================"
-sudo anydesk --get-id
-echo "========================\n"
-
 function notify_step() {
   echo -e "\n========================"
   echo "$1"
