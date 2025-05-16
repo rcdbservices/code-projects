@@ -24,6 +24,10 @@ sudo apt-get install -y xserver-xorg-video-dummy
 
 sudo rm /etc/X11/xorg.conf
 
+echo -e "\n========================"
+sudo anydesk --get-id
+echo "========================\n"
+
 notify_step "Restarting the display manager to apply the new configuration."
 sudo systemctl restart display-manager
 
