@@ -22,7 +22,7 @@ notify_step "Installing xserver-xorg-video-dummy..."
 sudo apt-get update
 sudo apt-get install -y xserver-xorg-video-dummy
 
-sudo rm /etc/X11/xorg.conf
+sudo rm -f /etc/X11/xorg.conf
 
 echo -e "\n========================"
 sudo anydesk --get-id
