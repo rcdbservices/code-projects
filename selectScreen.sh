@@ -53,8 +53,8 @@ Section "Screen"
     DefaultDepth 24
     SubSection "Display"
         Depth       24
-        Modes       "2560x1080"
-        #Modes       "1920x1080"
+        #Modes       "2560x1080"
+        Modes       "1920x1080"
     EndSubSection
 EndSection
 
